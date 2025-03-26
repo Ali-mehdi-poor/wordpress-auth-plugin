@@ -16,6 +16,11 @@ const WP_AUTH_INC = WP_AUTH_DIR . "\\inc\\";
 const WP_AUTH_TPL = WP_AUTH_DIR . "\\templates\\";
 const WP_AUTH_ASSETS = WP_AUTH_DIR . "\\assets\\";
 
+register_activation_hook(__FILE__, "wp_auth_active");
+register_deactivation_hook(__FILE__, "wp_auth_deactive");
+
+include WP_AUTH_INC."shortcode.php";
+
 function wp_auth_active()
 {
 
@@ -26,5 +31,3 @@ function wp_auth_deactive()
 
 }
 
-register_activation_hook(__FILE__, "wp_auth_active");
-register_deactivation_hook(__FILE__, "wp_auth_deactive");
