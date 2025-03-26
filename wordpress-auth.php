@@ -19,7 +19,7 @@ const WP_AUTH_ASSETS = WP_AUTH_DIR . "\\assets\\";
 register_activation_hook(__FILE__, "wp_auth_active");
 register_deactivation_hook(__FILE__, "wp_auth_deactive");
 
-include WP_AUTH_INC."shortcode.php";
+include WP_AUTH_INC."shortcodes.php";
 
 function wp_auth_active()
 {
