@@ -10,15 +10,16 @@ Version: 1.0.0
 */
 
 define("WP_AUTH_DIR", plugin_dir_path(__FILE__));
-define("WP_AUTH_URI", plugin_dir_url(__FILE__));
+define("WP_AUTH_URL", plugin_dir_url(__FILE__));
 
-const WP_AUTH_INC = WP_AUTH_DIR . "\\inc\\";
-const WP_AUTH_TPL = WP_AUTH_DIR . "\\templates\\";
-const WP_AUTH_ASSETS = WP_AUTH_DIR . "\\assets\\";
+const WP_AUTH_INC = WP_AUTH_DIR . "/inc/";
+const WP_AUTH_TPL = WP_AUTH_DIR . "/templates/";
+const WP_AUTH_ASSETS = WP_AUTH_URL . "/assets/";
 
 register_activation_hook(__FILE__, "wp_auth_active");
 register_deactivation_hook(__FILE__, "wp_auth_deactive");
 
+include WP_AUTH_INC."functions.php";
 include WP_AUTH_INC."shortcodes.php";
 
 function wp_auth_active()
