@@ -1,0 +1,47 @@
+:root {
+    --primary-color: #fff;
+    --secondry-color: #fff;
+    --bg-color: #fff;
+    --text-color: #000;
+    --light-low-opacity: rgba(255, 255, 255, 0.3);
+    --dark-low-opacity: rgba(0, 0, 0, 0.3);
+}
+/*
+
+    - helper class-
+
+*/
+
+/*
+
+    resets and sets
+
+*/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    background-color: var(--bg-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+/*
+
+    plugin Styles
+
+*/
+
