@@ -1,5 +1,5 @@
 jQuery.noConflict();
 
-jQuery(document).ready(function () {
-    console.log("ok!");
+jQuery(document).ready(function ($) {
+        
 });
