@@ -8,8 +8,10 @@ To use it, simply create a folder named wordpress-auth in your WordPress directo
 
 After activating the plugin, you can use the following shortcodes on your desired page to perform authentication operations:
 
-for register:
+# for register:
+
 [wp_auth_register]
 
-for login:
+# for login:
+
 [wp_auth_login]
