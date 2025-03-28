@@ -2,12 +2,13 @@
 
 add_action("wp_enqueue_scripts", "wp_auth_load_assets");
 
-function wp_auth_load_assets() {
+function wp_auth_load_assets()
+{
 
     // verify auth.css file for wordpress
     wp_register_style(
         "wp_auth_style",
-        WP_AUTH_ASSETS."styles/auth.css",
+        WP_AUTH_ASSETS . "styles/auth.css",
         [],
         time()
     );
@@ -16,11 +17,52 @@ function wp_auth_load_assets() {
     // verify auth.js file for wordpress
     wp_register_script(
         "wp_auth_script",
-        WP_AUTH_ASSETS."js/auth.js",
+        WP_AUTH_ASSETS . "js/auth.js",
         [
             "jquery"
         ],
         time()
     );
     wp_enqueue_script("wp_auth_script");
+}
+
+function wp_auth_validation_login($email, $password)
+{
+
+    $response = [
+        "is_valid" => false,
+        "message" => null
+    ];
+
+    if (empty($email)) {
+        $response["message"] = "ایمیل نباید خالی باشد.";
+        return $response;   
+    }
+
+    if (empty($password)) {
+        $response["message"] = "پسورد نباید خالی باشد.";
+        return $response;
+    }
+
+    // first way to validate email
+
+    if (!is_email($email)) {
+        $response["message"] = "ایمیل معتبر نمی باشد.";
+        return $response;
+    } else {
+        $response["message"] = "عملیات موفقیت آمیز بود.";
+        $response["is_valid"] = true;
+        return $response;
+    }
+
+    // second way to validate email
+
+    /* $pattern_email = "/^(\w)+\@(\w{3,6})\.(com)$/";
+    $result = (bool) preg_match($pattern_email, $email);
+    $response["is_valid"] = $result;
+    if (!$result) {
+        $response["message"] = "ایمیل معتبر نمی باشد.";
+    }else {
+        $response["message"] = "عملیات موفقیت آمیز بود.";
+    } */
 }

@@ -18,10 +18,8 @@ jQuery(document).ready(function ($) {
         user_password,
       },
       success: (res) => {
-        console.log("user login successfully!");
-
         $(".notif").addClass("notif--success");
-        $(".notif > .notif__content").text("عملیات با موفقیعت انجام شد!");
+        $(".notif > .notif__content").text(res.message);
         $(".notif > .notif__close_btn").on("click", (e) => {
           $(".notif").css({
             display: "none",
@@ -30,10 +28,8 @@ jQuery(document).ready(function ($) {
       },
       error: (error) => {
         if (error) {
-          console.log(error);
-
           $(".notif").addClass("notif--error");
-          $(".notif > .notif__content").text("عملیات با خطا مواجه شد:((");
+          $(".notif > .notif__content").text(error.responseJSON.message);
           $(".notif > .notif__close_btn").on("click", (e) => {
             $(".notif").css({
               display: "none",
@@ -71,7 +67,7 @@ jQuery(document).ready(function ($) {
         console.log("user register successfully!");
 
         $(".notif").addClass("notif--success");
-        $(".notif > .notif__content").text("عملیات با موفقیعت انجام شد!");
+        $(".notif > .notif__content").text(res.message);
         $(".notif > .notif__close_btn").on("click", (e) => {
           $(".notif").css({
             display: "none",
@@ -83,7 +79,7 @@ jQuery(document).ready(function ($) {
           console.log(new Error("bad request!"));
 
           $(".notif").addClass("notif--error");
-          $(".notif > .notif__content").text("عملیات با خطا مواجه شد:((");
+          $(".notif > .notif__content").text(error.responseJSON.message);
           $(".notif > .notif__close_btn").on("click", (e) => {
             $(".notif").css({
               display: "none",
