@@ -11,7 +11,7 @@ function wp_auth_load_assets()
         WP_AUTH_ASSETS . "styles/auth.css",
         [],
         time()
-    );
+    );  
     wp_enqueue_style("wp_auth_style");
 
     // verify auth.js file for wordpress

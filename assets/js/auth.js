@@ -18,6 +18,7 @@ jQuery(document).ready(function ($) {
         user_password,
       },
       success: (res) => {
+        $(".notif").removeClass("notif--error");
         $(".notif").addClass("notif--success");
         $(".notif > .notif__content").text(res.message);
         $(".notif > .notif__close_btn").on("click", (e) => {
@@ -25,9 +26,14 @@ jQuery(document).ready(function ($) {
             display: "none",
           });
         });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       },
       error: (error) => {
         if (error) {
+          $(".notif").removeClass("notif--success");
           $(".notif").addClass("notif--error");
           $(".notif > .notif__content").text(error.responseJSON.message);
           $(".notif > .notif__close_btn").on("click", (e) => {
@@ -73,6 +79,10 @@ jQuery(document).ready(function ($) {
             display: "none",
           });
         });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       },
       error: (error) => {
         if (error) {
