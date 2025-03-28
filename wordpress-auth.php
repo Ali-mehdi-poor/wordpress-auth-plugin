@@ -19,6 +19,7 @@ const WP_AUTH_ASSETS = WP_AUTH_URL . "/assets/";
 register_activation_hook(__FILE__, "wp_auth_active");
 register_deactivation_hook(__FILE__, "wp_auth_deactive");
 
+include WP_AUTH_INC."ajax.php";
 include WP_AUTH_INC."functions.php";
 include WP_AUTH_INC."shortcodes.php";
 

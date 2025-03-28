@@ -7,6 +7,31 @@
   padding: 2rem;
   margin: 0 auto;
 }
+.notif{
+    box-sizing: border-box;
+    width: 20rem;
+    height: 4rem;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+    display: none;
+    padding: 0 1.25rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dedede;
+}
+.notif .notif__close_btn{
+    cursor: pointer;
+}
+.notif--success{
+    border-right: 5px solid yellowgreen;
+}
+
+.notif--error{
+    border-right: 5px solid red;
+}
+
 .login-wrapper,
 .register-wrapper {
   height: 100%;
@@ -45,4 +70,8 @@
   height: 3rem;
   background-color: #ff85ae;
   color: #fff;
+}
+
+.form-row > button:hover {
+    opacity: 0.9;
 }

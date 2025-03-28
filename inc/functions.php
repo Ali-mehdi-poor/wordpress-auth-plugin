@@ -9,7 +9,7 @@ function wp_auth_load_assets() {
         "wp_auth_style",
         WP_AUTH_ASSETS."styles/auth.css",
         [],
-        false
+        time()
     );
     wp_enqueue_style("wp_auth_style");
 
@@ -20,7 +20,7 @@ function wp_auth_load_assets() {
         [
             "jquery"
         ],
-        false
+        time()
     );
     wp_enqueue_script("wp_auth_script");
 }
