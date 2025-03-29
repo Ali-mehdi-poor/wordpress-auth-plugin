@@ -4,8 +4,11 @@
         <div class="notif__content"> </div>
         <div class="notif__close_btn">&times;</div>
     </div>
-
-    <div class="register-wrapper">
+    
+    <div class="register-wrapper" >
+        <?php if (isset($wp_auth_options["register_form_title"])): ?>
+            <h1> <?php $wp_auth_options["register_form_title"];  ?></h1>
+        <?php endif; ?>
         <form action="" class="auth-form" id="registerForm" method="post">
 
             <div class="form-row">

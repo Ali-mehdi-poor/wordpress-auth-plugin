@@ -5,7 +5,10 @@
         <div class="notif__close_btn">&times;</div>
     </div>
 
-    <div class="login-wrapper">
+    <div class="login-wrapper" >
+        <?php if(isset($wp_auth_options["login_form_title"])): ?>
+            <h2> <?php echo $wp_auth_options["login_form_title"]; ?></h2>
+        <?php endif;?>
         <form action="" class="auth-form" id="loginForm" method="post">
 
             <div class="form-row">
