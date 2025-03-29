@@ -11,7 +11,7 @@ function wp_auth_load_assets()
         WP_AUTH_ASSETS . "styles/auth.css",
         [],
         time()
-    );  
+    );
     wp_enqueue_style("wp_auth_style");
 
     // verify auth.js file for wordpress
@@ -33,10 +33,13 @@ function wp_auth_validation_login($email, $password)
         "is_valid" => false,
         "message" => null
     ];
-
+    
+    // if you want more filters for validationyou can define another
+    // condition for this function
+    
     if (empty($email)) {
         $response["message"] = "ایمیل نباید خالی باشد.";
-        return $response;   
+        return $response;
     }
 
     if (empty($password)) {
@@ -48,10 +51,6 @@ function wp_auth_validation_login($email, $password)
 
     if (!is_email($email)) {
         $response["message"] = "ایمیل معتبر نمی باشد.";
-        return $response;
-    } else {
-        $response["message"] = "عملیات موفقیت آمیز بود.";
-        $response["is_valid"] = true;
         return $response;
     }
 
@@ -65,4 +64,58 @@ function wp_auth_validation_login($email, $password)
     }else {
         $response["message"] = "عملیات موفقیت آمیز بود.";
     } */
+
+    $response["message"] = "عملیات موفقیت آمیز بود.";
+    $response["is_valid"] = true;
+    return $response;
+
+}
+
+function wp_auth_validation_register($user_first_name, $user_last_name, $user_email, $user_password)
+{
+    $response = [
+        "is_valid" => false,
+        "message" => null
+    ];
+
+    // if you want more filters for validationyou can define another
+    // condition for this function
+    if (empty($user_first_name)) {
+        $response["message"] = "نام نباید خالی باشد.";
+        return $response;
+    }
+
+    if (empty($user_last_name)) {
+        $response["message"] = "نام خانوادگی نباید خالی باشد.";
+        return $response;
+    }
+
+    if (empty($user_email)) {
+        $response["message"] = "ایمیل نباید خالی باشد.";
+        return $response;
+    }
+
+    if (empty($user_password)) {
+        $response["message"] = "پسورد نباید خالی باشد.";
+        return $response;
+    }
+
+    if (!is_email($user_email)) {
+        $response["message"] = "ایمیل معتبر نمیباشد.";
+        return $response;
+    }
+
+    if (email_exists($user_email)) {
+        $response["message"] = "ایمیل قبلا استفاده شده است!";
+        return $response;
+    }
+
+    if (strlen($user_password) < 4 ) {
+        $response["message"] = "پسورد باید بیشتر از 4 رقم باشد.";
+        return $response;
+    }
+
+    $response["is_valid"] = true;
+    $response["message"] = "کاربر با موفقعیت ثبت نام شد.";
+    return $response;
 }

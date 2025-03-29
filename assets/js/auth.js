@@ -18,9 +18,9 @@ jQuery(document).ready(function ($) {
         user_password,
       },
       success: (res) => {
+        $(".notif > .notif__content").text(res.message);
         $(".notif").removeClass("notif--error");
         $(".notif").addClass("notif--success");
-        $(".notif > .notif__content").text(res.message);
         $(".notif > .notif__close_btn").on("click", (e) => {
           $(".notif").css({
             display: "none",
@@ -33,9 +33,9 @@ jQuery(document).ready(function ($) {
       },
       error: (error) => {
         if (error) {
+          $(".notif > .notif__content").text(error.responseJSON.message);
           $(".notif").removeClass("notif--success");
           $(".notif").addClass("notif--error");
-          $(".notif > .notif__content").text(error.responseJSON.message);
           $(".notif > .notif__close_btn").on("click", (e) => {
             $(".notif").css({
               display: "none",
@@ -70,10 +70,9 @@ jQuery(document).ready(function ($) {
         user_password,
       },
       success: (res) => {
-        console.log("user register successfully!");
-
-        $(".notif").addClass("notif--success");
         $(".notif > .notif__content").text(res.message);
+        $(".notif").removeClass("notif--error");
+        $(".notif").addClass("notif--success");
         $(".notif > .notif__close_btn").on("click", (e) => {
           $(".notif").css({
             display: "none",
@@ -81,15 +80,14 @@ jQuery(document).ready(function ($) {
         });
 
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/login";
         }, 2000);
       },
       error: (error) => {
         if (error) {
-          console.log(new Error("bad request!"));
-
-          $(".notif").addClass("notif--error");
           $(".notif > .notif__content").text(error.responseJSON.message);
+          $(".notif").removeClass("notif--success");
+          $(".notif").addClass("notif--error");
           $(".notif > .notif__close_btn").on("click", (e) => {
             $(".notif").css({
               display: "none",
