@@ -15,3 +15,5 @@ After activating the plugin, you can use the following shortcodes on your desire
 ### for login:
 
 [wp_auth_login]
+
+i develop this plugin for persian language but you can change html tags included on template directory to any language you want and use it.
