@@ -21,22 +21,38 @@ register_deactivation_hook(__FILE__, "wp_auth_deactive");
 
 // includes for admin
 if (is_admin()) {
-    include WP_AUTH_INC."admin/menus.php";
+    include WP_AUTH_INC . "admin/menus.php";
 }
 
 // includes for front-end
-include WP_AUTH_INC."functions.php";
-include WP_AUTH_INC."shortcodes.php";
-include WP_AUTH_INC."ajax.php";
+include WP_AUTH_INC . "functions.php";
+include WP_AUTH_INC . "shortcodes.php";
+include WP_AUTH_INC . "ajax.php";
 
+function wp_auth_install_default_configs()
+{
+    $wp_auth_configs = get_option("wp_auth_options");
+
+    if (!isset($wp_auth_configs)) {
+        $wp_auth_configs = [
+            "is_login_active" => true,
+            "is_register_active" => true,
+            "login_form_title" => "ورود",
+            "register_form_title" => "ثبت نام"
+        ];
+    
+        update_option("wp_auth_options", $wp_auth_configs);
+    }
+}
+
+function wp_auth_uninstall_plugin() {
+    delete_option("wp_auth_options");
+}
 
 function wp_auth_active()
 {
-
+    wp_auth_install_default_configs();
+    register_uninstall_hook(__FILE__, "wp_auth_uninstall_plugin");
 }
 
-function wp_auth_deactive()
-{
-
-}
-
+function wp_auth_deactive() {}
